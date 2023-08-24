@@ -9,17 +9,18 @@
 */
 void addnode(stack_t **head, int n)
 {
-	stack_t *new_node, *temp;
+	stack_t *new_node = malloc(sizeof(stack_t));
 
-	temp = *head;
-	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
-	{ printf("Error\n");
-		exit(0); }
-	if (temp)
-		temp->prev = new_node;
+	{
+		fprintf(stderr, "Error: Memory allocation failed\n");
+		exit(EXIT_FAILURE);
+	}
 	new_node->n = n;
-	new_node->next = *head;
 	new_node->prev = NULL;
+	new_node->next = *head;
+
+	if (*head != NULL)
+		(*head)->prev = new_node;
 	*head = new_node;
 }

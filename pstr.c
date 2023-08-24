@@ -10,18 +10,17 @@
 */
 void f_pstr(stack_t **head, unsigned int counter)
 {
-	stack_t *h;
+	stack_t *current = *head;
 	(void)counter;
 
-	h = *head;
-	while (h)
+	while (current)
 	{
-		if (h->n > 127 || h->n <= 0)
+		if (current->n > 127 || current->n <= 0)
 		{
 			break;
 		}
-		printf("%c", h->n);
-		h = h->next;
+		printf("%c", current->n);
+		current = current->next;
 	}
 	printf("\n");
 }
