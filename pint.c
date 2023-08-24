@@ -8,6 +8,8 @@
 */
 void f_pint(stack_t **head, unsigned int counter)
 {
+	int top_value = (*head)->n;
+
 	if (*head == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", counter);
@@ -16,5 +18,5 @@ void f_pint(stack_t **head, unsigned int counter)
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", (*head)->n);
+	printf("%d\n", top_value);
 }
