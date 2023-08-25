@@ -1,4 +1,5 @@
 #include "monty.h"
+
 /**
 * f_swap - function that swaps the top two elements of the stack
 * @head: head of stack
@@ -9,6 +10,7 @@
 void f_swap(stack_t **head, unsigned int counter)
 {
 	int temp = (*head)->n;
+
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", counter);
