@@ -5,22 +5,22 @@
  * @head: head node
  * @counter: line int
  */
-
 void f_rotl(stack_t **head,  __attribute__((unused)) unsigned int counter)
 {
-	stack_t *first = *head;
-	stack_t *second = (*head)->next;
+	stack_t *tmp = *head, *aux;
 
 	if (*head == NULL || (*head)->next == NULL)
-		return;
-	second->prev = NULL;
-
-	while (first->next != NULL)
 	{
-		first = first->next;
+		return;
 	}
-	first->next = *head;
+	aux = (*head)->next;
+	aux->prev = NULL;
+	while (tmp->next != NULL)
+	{
+		tmp = tmp->next;
+	}
+	tmp->next = *head;
 	(*head)->next = NULL;
-	(*head)->prev = first;
-	(*head) = second;
+	(*head)->prev = tmp;
+	(*head) = aux;
 }

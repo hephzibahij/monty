@@ -9,18 +9,13 @@
 */
 void f_sub(stack_t **head, unsigned int counter)
 {
-	int sub = (*head)->next->n - (*head)->n;
-	int stack_size = 0;
-	stack_t *temp = *head;
+	stack_t *aux;
+	int sus, nodes;
 
-	temp = *head;
-
-	while (temp != NULL)
-	{
-		stack_size++;
-		temp = temp->next;
-	}
-	if (stack_size < 2)
+	aux = *head;
+	for (nodes = 0; aux != NULL; nodes++)
+		aux = aux->next;
+	if (nodes < 2)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", counter);
 		fclose(bus.file);
@@ -28,7 +23,9 @@ void f_sub(stack_t **head, unsigned int counter)
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	temp->next->n = sub;
-	*head = temp->next;
-	free(temp);
+	aux = *head;
+	sus = aux->next->n - aux->n;
+	aux->next->n = sus;
+	*head = aux->next;
+	free(aux);
 }
